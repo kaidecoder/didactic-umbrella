@@ -7,7 +7,8 @@ export default function Header() {
     { name: "Home", href: "#" },
     { name: "Topics", href: "#" },
     { name: "Exams", href: "#" },
-    { name: "Fun Tools", href: "#" },
+    { name: "Fun", href: "#" },
+    { name: "Tools", href: "#" },
     { name: "About", href: "#" },
   ]
 
