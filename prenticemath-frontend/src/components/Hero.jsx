@@ -1,3 +1,5 @@
+import MathCalculator from "./MathCalculator";
+
 export default function Hero() {
   return (
     <div className="relative bg-white overflow-hidden border-b border-slate-100">
@@ -11,7 +13,7 @@ export default function Hero() {
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
             Making Math Accessible for <span className="text-blue-600">Everyone</span>
           </h1>
-
+            <MathCalculator />
           {/* Subheading */}
           <p className="mt-4 text-xl text-slate-500 max-w-xl mx-auto leading-relaxed">
             Discover curations of lessons, homework keys, and high-quality resources built for student growth, parent support, and teacher efficiency.
