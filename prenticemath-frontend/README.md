@@ -4,20 +4,23 @@ A centralized hub designed for students, parents, and teachers to easily find hi
 
 ## 🎯 Key Target Audiences
 
--   **🎓 Students:** Quick access to practice problems, calculators, interactive tools, and study guides.
--   **👪 Parents:** Homework help guides, curriculum overviews, and progress tracking resources.
--   **🍎 Teachers:** Lesson plans, printable worksheets, classroom activities, and assessment templates.
+- **🎓 Students:** Quick access to practice problems, calculators, interactive tools, and study guides.
+- **👪 Parents:** Homework help guides, curriculum overviews, and progress tracking resources.
+- **🍎 Teachers:** Lesson plans, printable worksheets, classroom activities, and assessment templates.
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 Before running or developing this project locally, ensure you have the following installed:
+
 - [Node.js](https://nodejs.org) (v18 or higher recommended)
 - [Git](https://git-scm.com)
 
 ### Installation
+
 Follow these quick steps to get a local copy up and running:
 
 1. Clone the repository:
@@ -34,19 +37,22 @@ Follow these quick steps to get a local copy up and running:
    ```
 
 ### Running the App
+
 To start the local development server:
+
 ```bash
 npm run dev
 ```
+
 Open your browser and navigate to `http://localhost:3000` to view the page.
 
 ---
 
 ## 🛠️ Tech Stack
 
--   **Frontend:** HTML5, CSS3, JavaScript (or specify framework like React / Vue)
--   **Styling:** TailwindCSS (or CSS Modules)
--   **Deployment:** Vercel / GitHub Pages
+- **Frontend:** HTML5, CSS3, React
+- **Styling:** TailwindCSS (or CSS Modules)
+- **Deployment:** Vercel / GitHub Pages
 
 ---
 
