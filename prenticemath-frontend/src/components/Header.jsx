@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-export default function Header({ onToggleTools, onToggleFun, onToggleTopics, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen }) {
+export default function Header({ onToggleTools, onToggleFun, onToggleTopics, onToggleExams, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen, isExamsOpen }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '#' },
     { name: 'Topics', action: onToggleTopics, isActive: isTopicsOpen }, // Linked directly to component state
-    { name: 'Exams', href: '#' },
+    { name: 'Exams', action: onToggleExams, isActive: isExamsOpen },
     { name: 'Fun Games', action: onToggleFun, isActive: isFunOpen},
     { name: 'Tools', action: onToggleTools, isActive: isToolsOpen },
     { name: 'About', href: '#' },
