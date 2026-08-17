@@ -1,8 +1,8 @@
-import { useState } from 'react';
+
 
 // 1. Double check that ALL incoming status props are destructured here at the top line
 export default function Header({ onToggleTools, onToggleFun, onToggleExams, onToggleTopics, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen, isExamsOpen }) {
-  const [isOpen, setIsOpen] = useState(false);
+  
 
   // 2. This array maps your incoming visibility states to the color check loop
   const navItems = [

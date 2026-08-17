@@ -11,6 +11,7 @@ import QuizGenerator from "./components/QuizGenerator"
 import WorksheetDownloads from "./components/WorksheetDownloads"
 import TopicGrid from "./components/TopicGrid"
 import Footer from "./components/Footer"
+import PlayableGames from "./components/PlayableGames"
 
 export default function App() {
   // --- VISIBILITY STATES FOR EACH SECTION ---
@@ -88,6 +89,7 @@ export default function App() {
             >
               <MathTrivia />
               <GameDirectory />
+              <PlayableGames />
             </div>
           )}
 
