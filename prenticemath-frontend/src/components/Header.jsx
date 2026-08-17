@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo / Project Name */}
           <div className="flex-shrink-0 flex items-center">
-            <span className="text-2xl font-black tracking-tight text-blue-600">
+            <span className="text-2xl font-black tracking-tight text-red-700">
               prentice<span className="text-slate-800">math</span>
             </span>
           </div>

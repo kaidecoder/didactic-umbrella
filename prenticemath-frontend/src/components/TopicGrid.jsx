@@ -6,7 +6,10 @@ export default function TopicGrid() {
         "Master variables, linear functions, quadratics, and graphing calculations.",
       audience: "Students",
       resourceCount: "24 Resources",
-      color: "border-t-blue-500 text-blue-600 bg-blue-50",
+      // We pass the full, complete strings separately so Tailwind can read them safely
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
     {
       title: "Geometry Essentials",
@@ -14,7 +17,9 @@ export default function TopicGrid() {
         "Explore proof structures, area, perimeter, volume, and coordinate proofs.",
       audience: "Students",
       resourceCount: "18 Resources",
-      color: "border-t-indigo-500 text-indigo-600 bg-indigo-50",
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
     {
       title: "Calculus & Limits",
@@ -22,7 +27,9 @@ export default function TopicGrid() {
         "Dive into continuous rate changes, derivatives, and integral theory.",
       audience: "Students",
       resourceCount: "12 Resources",
-      color: "border-t-violet-500 text-violet-600 bg-violet-50",
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
     {
       title: "Homework Helper Guides",
@@ -30,7 +37,9 @@ export default function TopicGrid() {
         "Step-by-step curriculum walkthroughs to support your child at home.",
       audience: "Parents",
       resourceCount: "15 Guides",
-      color: "border-t-emerald-500 text-emerald-600 bg-emerald-50",
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
     {
       title: "Common Core Maps",
@@ -38,7 +47,9 @@ export default function TopicGrid() {
         "Understand state standards and targeted math learning pathways.",
       audience: "Parents",
       resourceCount: "8 Guides",
-      color: "border-t-teal-500 text-teal-600 bg-teal-50",
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
     {
       title: "Lesson Plan Blueprints",
@@ -46,14 +57,15 @@ export default function TopicGrid() {
         "Downloadable syllabi, classroom discussion prompts, and activity ideas.",
       audience: "Teachers",
       resourceCount: "30 Packages",
-      color: "border-t-amber-500 text-amber-600 bg-amber-50",
+      borderClass: "border-t-red-700",
+      textClass: "text-red-700",
+      bgClass: "bg-red-50",
     },
   ]
 
   return (
     <section className="py-12 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             Explore Math Resources
@@ -64,40 +76,38 @@ export default function TopicGrid() {
           </p>
         </div>
 
-        {/* Responsive Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {topics.map((topic, index) => (
             <div
               key={index}
-              className={`bg-white rounded-xl shadow-sm border border-slate-200 border-t-4 ${topic.color.split(" ")[0]} p-6 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-200`}
+              // Render the unbroken classes straight onto the container elements
+              className={`bg-white rounded-xl shadow-sm border border-slate-200 border-t-4 ${topic.borderClass} p-6 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-200`}
             >
               <div>
-                {/* Badge Tag */}
+                {/* Badge Tag - Dynamically applying clean text and background styles */}
                 <span
-                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${topic.color.split(" ").slice(1).join(" ")}`}
+                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${topic.textClass} ${topic.bgClass}`}
                 >
                   {topic.audience}
                 </span>
 
-                {/* Title */}
-                <h3 className="mt-4 text-xl font-bold text-slate-900 group-hover:text-blue-600">
+                <h3 className="mt-4 text-xl font-bold text-slate-900">
                   {topic.title}
                 </h3>
 
-                {/* Description */}
                 <p className="mt-2 text-sm text-slate-500 leading-relaxed">
                   {topic.description}
                 </p>
               </div>
 
-              {/* Card Footer Link and Meta Info */}
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-xs font-medium text-slate-400">
                   {topic.resourceCount}
                 </span>
+                {/* Dynamically styling the inline text hyperlink to matching colors */}
                 <a
                   href="#"
-                  className="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                  className={`inline-flex items-center text-sm font-semibold ${topic.textClass} hover:opacity-80 transition-opacity`}
                 >
                   View Material
                   <svg
