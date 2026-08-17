@@ -23,9 +23,9 @@ export default function Footer() {
         {/* Top Grid Area */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 xl:gap-12 pb-12 border-b border-slate-100">
 
-          {/* Brand Column */}
+          {/* Brand Column - Brand text set to match header perfectly */}
           <div className="lg:col-span-2">
-            <span className="text-2xl font-black tracking-tight text-blue-600">
+            <span className="text-2xl font-black tracking-tight text-red-700">
               prentice<span className="text-slate-800">math</span>
             </span>
             <p className="mt-4 text-sm text-slate-500 max-w-sm leading-relaxed">
@@ -33,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Directory Links Columns */}
+          {/* Directory Links Columns - Links shift to red-700 hover state */}
           {sections.map((section, idx) => (
             <div key={idx}>
               <h4 className="text-sm font-semibold text-slate-900 tracking-wider uppercase">
@@ -42,7 +42,7 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {section.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-slate-500 hover:text-blue-600 transition-colors duration-150">
+                    <a href="#" className="text-sm text-slate-500 hover:text-red-700 transition-colors duration-150">
                       {link}
                     </a>
                   </li>
