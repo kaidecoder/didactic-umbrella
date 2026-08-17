@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
-export default function Header({ onToggleTools, onToggleFun, onToggleTopics, onToggleExams, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen, isExamsOpen }) {
+// 1. Double check that ALL incoming status props are destructured here at the top line
+export default function Header({ onToggleTools, onToggleFun, onToggleExams, onToggleTopics, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen, isExamsOpen }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // 2. This array maps your incoming visibility states to the color check loop
   const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'Topics', action: onToggleTopics, isActive: isTopicsOpen }, // Linked directly to component state
+    { name: 'Home', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }), isActive: !isToolsOpen && !isTopicsOpen && !isFunOpen && !isExamsOpen },
+    { name: 'Topics', action: onToggleTopics, isActive: isTopicsOpen },
     { name: 'Exams', action: onToggleExams, isActive: isExamsOpen },
-    { name: 'Fun Games', action: onToggleFun, isActive: isFunOpen},
     { name: 'Tools', action: onToggleTools, isActive: isToolsOpen },
+    { name: 'Fun Games', action: onToggleFun, isActive: isFunOpen },
     { name: 'About', href: '#' },
   ];
 
@@ -27,10 +29,10 @@ export default function Header({ onToggleTools, onToggleFun, onToggleTopics, onT
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               item.action ? (
-                // Renders interactive buttons for active structural layouts (Topics & Fun Tools)
                 <button
                   key={item.name}
                   onClick={item.action}
+                  // 3. This condition forces the crimson text color to pop out when the state is active!
                   className={`text-sm font-semibold transition-colors duration-200 ${
                     item.isActive ? 'text-red-500 font-bold' : 'text-zinc-400 hover:text-red-500'
                   }`}
