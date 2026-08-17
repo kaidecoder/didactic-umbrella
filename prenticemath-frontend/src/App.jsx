@@ -3,32 +3,24 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import MathCalculator from './components/MathCalculator';
 import FormulaSheet from './components/FormulaSheet';
+import MathTrivia from './components/MathTrivia'; // <-- Import Trivia Card Deck
 import TopicGrid from './components/TopicGrid';
 import Footer from './components/Footer';
+import GameDirectory from './components/GameDirectory';
 
 export default function App() {
   const [calculatorTab, setCalculatorTab] = useState('scientific');
   const [showTools, setShowTools] = useState(false);
-  // 1. Control the visibility state of the Topic Cards Grid
   const [showTopics, setShowTopics] = useState(false);
+  // Separate dynamic state for the Fun Games section
+  const [showFun, setShowFun] = useState(false);
 
   const navigateToTool = (tabId) => {
     setCalculatorTab(tabId);
     setShowTools(true);
+    setShowFun(false); // Clean overlay closing toggle
     setTimeout(() => {
-      const calcElement = document.getElementById('tools-portal-section');
-      if (calcElement) calcElement.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
-  };
-
-  // 2. Action to toggle and smoothly scroll to the Topics layout section
-  const handleToggleTopics = () => {
-    setShowTopics((prev) => !prev);
-    setTimeout(() => {
-      const topicsElement = document.getElementById('topics-portal-section');
-      if (topicsElement) {
-        topicsElement.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.getElementById('tools-portal-section')?.scrollIntoView({ behavior: 'smooth' });
     }, 50);
   };
 
@@ -36,17 +28,19 @@ export default function App() {
     <div className="min-h-screen bg-zinc-900 text-zinc-100 flex flex-col justify-between">
       <div>
         <Header
-          onToggleTools={() => setShowTools(!showTools)}
-          onToggleTopics={handleToggleTopics} // Pass the layout handler to header
+          onToggleTools={() => { setShowTools(!showTools); setShowFun(false); }}
+          onToggleFun={() => { setShowFun(!showFun); setShowTools(false); }} // Handle Fun toggle button separately
+          onToggleTopics={() => setShowTopics(!showTopics)}
           onEnterPortal={() => navigateToTool('scientific')}
           isToolsOpen={showTools}
-          isTopicsOpen={showTopics} // Pass active state tracking properties
+          isTopicsOpen={showTopics}
+          isFunOpen={showFun}
         />
 
         <main>
           <Hero />
 
-          {/* Conditional Tools & Formula Section */}
+          {/* Pure Numerical calculation Tools module layout */}
           {showTools && (
             <div id="tools-portal-section" className="bg-zinc-950/40 border-y border-zinc-800 py-6">
               <MathCalculator activeTab={calculatorTab} setActiveTab={setCalculatorTab} />
@@ -54,12 +48,15 @@ export default function App() {
             </div>
           )}
 
-          {/* 3. Conditional Topics Section: Only loads when showTopics is TRUE */}
-          {showTopics && (
-            <div id="topics-portal-section" className="border-t border-zinc-800/50">
-              <TopicGrid />
+          {/* Interactive Educational Fun Games module layout */}
+          {showFun && (
+            <div id="fun-games-portal-section" className="bg-zinc-950/40 border-y border-zinc-800 py-6">
+              <MathTrivia />
+              <GameDirectory />
             </div>
           )}
+
+          {showTopics && <TopicGrid />}
         </main>
       </div>
       <Footer />
