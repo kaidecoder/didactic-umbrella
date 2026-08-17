@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export default function Header({ onToggleTools, onEnterPortal, isToolsOpen }) {
+export default function Header({ onToggleTools, onToggleTopics, onEnterPortal, isToolsOpen, isTopicsOpen }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '#' },
-    { name: 'Topics', href: '#' },
-    { name: 'Exams', href: '#' },
+    { name: 'Topics', action: onToggleTopics, isActive: isTopicsOpen }, // Linked directly to component state
+    { name: 'Tests', href: '#' },
     { name: 'Fun', href: '#' },
-    { name: 'Tools', action: onToggleTools }, // Connects to tools display trigger
+    { name: 'Tools', action: onToggleTools, isActive: isToolsOpen },
     { name: 'About', href: '#' },
   ];
 
@@ -23,16 +23,16 @@ export default function Header({ onToggleTools, onEnterPortal, isToolsOpen }) {
             </span>
           </div>
 
-          {/* Desktop Navigation Links Menu */}
+          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               item.action ? (
-                // If it is the "Fun Tools" link, render as an interactive action button
+                // Renders interactive buttons for active structural layouts (Topics & Fun Tools)
                 <button
                   key={item.name}
                   onClick={item.action}
                   className={`text-sm font-semibold transition-colors duration-200 ${
-                    isToolsOpen ? 'text-red-500 font-bold' : 'text-zinc-400 hover:text-red-500'
+                    item.isActive ? 'text-red-500 font-bold' : 'text-zinc-400 hover:text-red-500'
                   }`}
                 >
                   {item.name}
@@ -49,7 +49,6 @@ export default function Header({ onToggleTools, onEnterPortal, isToolsOpen }) {
             ))}
           </nav>
 
-          {/* Connected Enter Portal Action button link */}
           <div className="hidden md:flex items-center">
             <button
               onClick={onEnterPortal}
