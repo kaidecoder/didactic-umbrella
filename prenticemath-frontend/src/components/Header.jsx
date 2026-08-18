@@ -1,67 +1,146 @@
+import { useState } from "react"
 
+export default function Header({
+  onResetHome,
+  onToggleTools,
+  onToggleFun,
+  onToggleExams,
+  onToggleTopics,
+  isToolsOpen,
+  isTopicsOpen,
+  isFunOpen,
+  isExamsOpen,
+}) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-// 1. Double check that ALL incoming status props are destructured here at the top line
-export default function Header({ onToggleTools, onToggleFun, onToggleExams, onToggleTopics, onEnterPortal, isToolsOpen, isTopicsOpen, isFunOpen, isExamsOpen }) {
-  
+  // Checks if no other sections are currently highlighted
+  const isHomeActive =
+    !isToolsOpen && !isFunOpen && !isExamsOpen && !isTopicsOpen
 
-  // 2. This array maps your incoming visibility states to the color check loop
-  const navItems = [
-    { name: 'Home', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }), isActive: !isToolsOpen && !isTopicsOpen && !isFunOpen && !isExamsOpen },
-    { name: 'Topics', action: onToggleTopics, isActive: isTopicsOpen },
-    { name: 'Exams', action: onToggleExams, isActive: isExamsOpen },
-    { name: 'Tools', action: onToggleTools, isActive: isToolsOpen },
-    { name: 'Fun Games', action: onToggleFun, isActive: isFunOpen },
-    { name: 'About', href: '#' },
-  ];
+  const handleNavClick = (toggleAction) => {
+    toggleAction()
+    setIsMobileMenuOpen(false)
+  }
 
   return (
-    <header className="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-
-          <div className="flex-shrink-0 flex items-center">
-            <span className="text-2xl font-black tracking-tight text-red-600">
-              prentice<span className="text-zinc-100">math</span>
-            </span>
-          </div>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              item.action ? (
-                <button
-                  key={item.name}
-                  onClick={item.action}
-                  // 3. This condition forces the crimson text color to pop out when the state is active!
-                  className={`text-sm font-semibold transition-colors duration-200 ${
-                    item.isActive ? 'text-red-500 font-bold' : 'text-zinc-400 hover:text-red-500'
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-semibold text-zinc-400 hover:text-red-500 transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
-              )
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center">
-            <button
-              onClick={onEnterPortal}
-              className="bg-zinc-100 hover:bg-zinc-200 text-zinc-900 text-sm font-bold px-5 py-2.5 rounded-xl shadow-sm transition-all duration-200"
-            >
-              Enter Portal ➔
-            </button>
-          </div>
-
+    <header className="bg-zinc-950 border-b border-zinc-800 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        {/* --- BRAND LOGO (Resets to Home view on click, now with Red text) --- */}
+        <div
+          onClick={onResetHome}
+          className="flex items-center space-x-2 cursor-pointer"
+        >
+          <span className="text-xl font-bold tracking-tight text-white">
+            Prentice<span className="text-red-500">Math</span>
+          </span>
         </div>
+
+        {/* --- DESKTOP NAVIGATION BAR --- */}
+        <nav className="hidden md:flex items-center space-x-6">
+          <button
+            onClick={onResetHome}
+            className={`transition ${isHomeActive ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+          >
+            Home
+          </button>
+          <button
+            onClick={onToggleTools}
+            className={`transition ${isToolsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+          >
+            Tools
+          </button>
+          <button
+            onClick={onToggleFun}
+            className={`transition ${isFunOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+          >
+            Fun Zone
+          </button>
+          <button
+            onClick={onToggleExams}
+            className={`transition ${isExamsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+          >
+            Exams
+          </button>
+          <button
+            onClick={onToggleTopics}
+            className={`transition ${isTopicsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+          >
+            Topics
+          </button>
+        </nav>
+
+        {/* --- HAMBURGER BUTTON --- */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-900 focus:outline-none"
+        >
+          {isMobileMenuOpen ? (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
       </div>
+
+      {/* --- MOBILE DRAWER DROPDOWN --- */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-zinc-950 border-t border-zinc-800 px-4 pt-2 pb-4 space-y-3 flex flex-col">
+          <button
+            onClick={() => handleNavClick(onResetHome)}
+            className={`text-left py-2 border-b border-zinc-900 ${isHomeActive ? "text-red-400" : "text-zinc-400"}`}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => handleNavClick(onToggleTools)}
+            className={`text-left py-2 border-b border-zinc-900 ${isToolsOpen ? "text-red-400" : "text-zinc-400"}`}
+          >
+            Tools
+          </button>
+          <button
+            onClick={() => handleNavClick(onToggleFun)}
+            className={`text-left py-2 border-b border-zinc-900 ${isFunOpen ? "text-red-400" : "text-zinc-400"}`}
+          >
+            Fun Zone
+          </button>
+          <button
+            onClick={() => handleNavClick(onToggleExams)}
+            className={`text-left py-2 border-b border-zinc-900 ${isExamsOpen ? "text-red-400" : "text-zinc-400"}`}
+          >
+            Exams
+          </button>
+          <button
+            onClick={() => handleNavClick(onToggleTopics)}
+            className={`text-left py-2 border-b border-zinc-900 ${isTopicsOpen ? "text-red-400" : "text-zinc-400"}`}
+          >
+            Topics
+          </button>
+        </div>
+      )}
     </header>
-  );
+  )
 }

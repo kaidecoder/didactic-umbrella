@@ -34,29 +34,44 @@ export default function App() {
     }, 50)
   }
 
+  // This returns TRUE only if all tools, fun sections, exams, and topics are closed
+  const isLandingPage = !showTools && !showFun && !showExams && !showTopics
+
   return (
     <div className="min-h-screen bg-zinc-900 text-zinc-100 flex flex-col justify-between">
       <div>
         {/* Pass down clear button control hooks to your header bar */}
         <Header
+          onResetHome={() => {
+            setShowTools(false)
+            setShowFun(false)
+            setShowExams(false)
+            setShowTopics(false)
+          }}
           onToggleTools={() => {
             setShowTools(!showTools)
             setShowFun(false)
             setShowExams(false)
+            setShowTopics(false) // Closes topics
           }}
           onToggleFun={() => {
             setShowFun(!showFun)
             setShowTools(false)
             setShowExams(false)
+            setShowTopics(false) // Closes topics
           }}
           onToggleExams={() => {
             setShowExams(!showExams)
             setShowTools(false)
             setShowFun(false)
+            setShowTopics(false) // Closes topics
           }}
-          onToggleTopics={() => setShowTopics(!showTopics)}
-          onEnterPortal={() => navigateToTool("scientific")}
-          // CRUCIAL COUPLING LINES: Ensure these 4 lines match your useState variables exactly
+          onToggleTopics={() => {
+            setShowTopics(!showTopics)
+            setShowTools(false) // Closes tools
+            setShowFun(false) // Closes fun
+            setShowExams(false) // Closes exams to fix the sticking highlight!
+          }}
           isToolsOpen={showTools}
           isTopicsOpen={showTopics}
           isFunOpen={showFun}
@@ -65,7 +80,8 @@ export default function App() {
 
         <main>
           {/* Main welcoming branding text */}
-          <Hero />
+          {/* --- LANDING PAGE: Main welcoming branding text --- */}
+          {isLandingPage && <Hero />}
 
           {/* --- VIEW BLOCK 1: PURE UTILITY TOOLS & SOLUTIONS --- */}
           {showTools && (
@@ -107,8 +123,12 @@ export default function App() {
           )}
 
           {/* --- VIEW BLOCK 4: RESOURCE GENRES GRID --- */}
+          {/* --- VIEW BLOCK 4: RESOURCE GENRES GRID --- */}
           {showTopics && (
-            <div id="topics-portal-section">
+            <div
+              id="topics-portal-section"
+              className="bg-zinc-950/40 border-y border-zinc-800 py-12 w-full min-h-[300px]"
+            >
               <TopicGrid />
             </div>
           )}
