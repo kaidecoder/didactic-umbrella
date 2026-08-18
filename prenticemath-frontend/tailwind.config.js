@@ -3,7 +3,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Scans all files in your src folder
+    "./src/**/*.{js,ts,jsx,tsx}", // 👈 CRITICAL: This line must look exactly like this!
   ],
   theme: {
     extend: {},
