@@ -31,7 +31,7 @@ export default function Header({
           className="flex items-center space-x-2 cursor-pointer"
         >
           <span className="text-xl font-bold tracking-tight text-white">
-            Prentice<span className="text-red-500">Math</span>
+            Prentice<span className="text-red-700">Math</span>
           </span>
         </div>
 
@@ -39,31 +39,31 @@ export default function Header({
         <nav className="hidden md:flex items-center space-x-6">
           <button
             onClick={onResetHome}
-            className={`transition ${isHomeActive ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            className={`transition ${isHomeActive ? "text-red-700 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
             Home
           </button>
           <button
             onClick={onToggleTools}
-            className={`transition ${isToolsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            className={`transition ${isToolsOpen ? "text-red-700 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
             Tools
           </button>
           <button
             onClick={onToggleFun}
-            className={`transition ${isFunOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            className={`transition ${isFunOpen ? "text-red-700 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
             Fun Zone
           </button>
           <button
             onClick={onToggleExams}
-            className={`transition ${isExamsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            className={`transition ${isExamsOpen ? "text-red-700 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
             Exams
           </button>
           <button
             onClick={onToggleTopics}
-            className={`transition ${isTopicsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            className={`transition ${isTopicsOpen ? "text-red-700 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
             Topics
           </button>
@@ -135,7 +135,7 @@ export default function Header({
           </button>
           <button
             onClick={() => handleNavClick(onToggleTopics)}
-            className={`text-left py-2 border-b border-zinc-900 ${isTopicsOpen ? "text-red-400" : "text-zinc-400"}`}
+            className={`text-left py-2 border-b border-zinc-900 ${isTopicsOpen ? "text-red-700" : "text-zinc-400"}`}
           >
             Topics
           </button>

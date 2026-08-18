@@ -1,0 +1,86 @@
+[
+  {
+    "category": "Algebra & Functions",
+    "icon": "📐",
+    "standardsFramework": "CCSS.MATH.CONTENT.HSA",
+    "lessons": [
+      {
+        "title": "Linear Equations & Graphing",
+        "standardCode": "HSA.REI.D.10",
+        "objective": "Understand that the graph of an equation in two variables is the set of all its solutions plotted in the coordinate plane.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "Middle School+"
+      },
+      {
+        "title": "Quadratic Formula & Factoring",
+        "standardCode": "HSA.REI.B.4",
+        "objective": "Solve quadratic equations in one variable using inspection, square roots, and the quadratic formula.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "High School"
+      }
+    ]
+  },
+  {
+    "category": "Geometry & Trigonometry",
+    "icon": "⟁",
+    "standardsFramework": "CCSS.MATH.CONTENT.HSG",
+    "lessons": [
+      {
+        "title": "The Pythagorean Theorem",
+        "standardCode": "HSG.SRT.C.8",
+        "objective": "Use trigonometric ratios and the Pythagorean Theorem to solve right triangles in applied problems.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "Middle School+"
+      },
+      {
+        "title": "Coordinate Plane Transformations",
+        "standardCode": "HSG.CO.A.2",
+        "objective": "Represent transformations in the plane using transparencies and geometry software; describe transformations as functions.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "High School"
+      }
+    ]
+  },
+  {
+    "category": "Data, Statistics & Probability",
+    "icon": "📊",
+    "standardsFramework": "CCSS.MATH.CONTENT.HSS",
+    "lessons": [
+      {
+        "title": "Interpreting Data Distributions",
+        "standardCode": "HSS.ID.A.1",
+        "objective": "Represent data with plots on the real number line, including dot plots, histograms, and box plots.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "High School"
+      },
+      {
+        "title": "Independent & Conditional Probability",
+        "standardCode": "HSS.CP.A.2",
+        "objective": "Understand that two events A and B are independent if the probability of both occurring together is the product of their probabilities.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "High School"
+      }
+    ]
+  },
+  {
+    "category": "Calculus Foundations",
+    "icon": "📈",
+    "standardsFramework": "Advanced Placement / Calculus",
+    "lessons": [
+      {
+        "title": "Limits & Continuity",
+        "standardCode": "CALC.LIM-1",
+        "objective": "Determine the limit of a function using numerical, graphical, and algebraic evaluation methods.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "Advanced / AP"
+      },
+      {
+        "title": "The Derivative Concept",
+        "standardCode": "CALC.CHA-2",
+        "objective": "Define the derivative of a function as a limit of a difference quotient and interpret it as an instantaneous rate of change.",
+        "rawMarkdownUrl": "https://githubusercontent.com",
+        "difficulty": "Advanced / AP"
+      }
+    ]
+  }
+]

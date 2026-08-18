@@ -1,0 +1,20 @@
+[
+  {
+    "id": "alg-linear-01",
+    "title": "Solving Systems of Linear Equations",
+    "topic": "Algebra",
+    "gradeLevel": "Grade 8 / High School",
+    "standard": "CCSS.MATH.CONTENT.HSA.REI.C.6",
+    "description": "Practice worksheet covering substitution and elimination graphing methods.",
+    "downloadUrl": "https://githubusercontent.com"
+  },
+  {
+    "id": "geo-pythag-02",
+    "title": "Pythagorean Theorem Word Problems",
+    "topic": "Geometry",
+    "gradeLevel": "Grade 8",
+    "standard": "CCSS.MATH.CONTENT.8.G.B.7",
+    "description": "Real-world geometry application scenarios utilizing a² + b² = c².",
+    "downloadUrl": "https://githubusercontent.com"
+  }
+]
