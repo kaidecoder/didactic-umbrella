@@ -29,7 +29,7 @@ Follow these quick steps to get a local copy up and running:
    ```
 2. Navigate into the project directory:
    ```bash
-   cd didactic-umbrella
+   cd prenticemath-frontend
    ```
 3. Install the required dependencies:
    ```bash
@@ -59,7 +59,7 @@ Open your browser and navigate to `http://localhost:3000` to view the page.
 ## 📂 Project Structure
 
 ```text
-didactic-umbrella/
+prenticemath-frontend/
 ├── public/              # Static assets (images, icons, fonts)
 ├── src/
 │   ├── components/      # Reusable UI components (Navbar, Footer, Cards)
