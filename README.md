@@ -51,8 +51,8 @@ Open your browser and navigate to `http://localhost:3000` to view the page.
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML5, CSS3, React
-- **Styling:** TailwindCSS (or CSS Modules)
-- **Deployment:** Vercel / GitHub Pages
+- **Styling:** TailwindCSS
+- **Deployment:** GitHub Pages
 
 ---
 
