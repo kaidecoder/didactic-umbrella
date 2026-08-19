@@ -1,7 +1,7 @@
 import { defineConfig } from "vite"
-import react from "@vitejs/react-refresh" // or your standard plugin
+import react from "@vitejs/plugin-react"
 
 export default defineConfig({
-  base: "/prenticemath-frontend/", // Must match your repo name exactly
+  base: "/prenticemath-frontend/",
   plugins: [react()],
 })
