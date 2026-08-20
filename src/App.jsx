@@ -12,6 +12,8 @@ import WorksheetDownloads from "./components/WorksheetDownloads"
 import TopicGrid from "./components/TopicGrid"
 import Footer from "./components/Footer"
 import PlayableGames from "./components/PlayableGames"
+import ReferenceHub from "./components/ReferenceHub"
+import StudyCenter from "./components/StudyCenter"
 
 export default function App() {
   // --- VISIBILITY STATES FOR EACH SECTION ---
@@ -19,14 +21,14 @@ export default function App() {
   const [showTools, setShowTools] = useState(false)
   const [showTopics, setShowTopics] = useState(false)
   const [showFun, setShowFun] = useState(false)
-  const [showExams, setShowExams] = useState(false)
+  const [showMathHub, setShowMathHub] = useState(false)
 
   // --- CONNECTED NAVIGATION SMOOTH SCROLL HANDLER ---
   const navigateToTool = (tabId) => {
     setCalculatorTab(tabId)
     setShowTools(true)
     setShowFun(false)
-    setShowExams(false)
+    setShowMathHub(false)
     setTimeout(() => {
       document
         .getElementById("tools-portal-section")
@@ -35,7 +37,7 @@ export default function App() {
   }
 
   // This returns TRUE only if all tools, fun sections, exams, and topics are closed
-  const isLandingPage = !showTools && !showFun && !showExams && !showTopics
+  const isLandingPage = !showTools && !showFun && !showMathHub && !showTopics
 
   return (
     <div className="min-h-screen bg-zinc-900 text-zinc-100 flex flex-col justify-between">
@@ -45,23 +47,23 @@ export default function App() {
           onResetHome={() => {
             setShowTools(false)
             setShowFun(false)
-            setShowExams(false)
+            setShowMathHub(false)
             setShowTopics(false)
           }}
           onToggleTools={() => {
             setShowTools(!showTools)
             setShowFun(false)
-            setShowExams(false)
+            setShowMathHub(false)
             setShowTopics(false) // Closes topics
           }}
           onToggleFun={() => {
             setShowFun(!showFun)
             setShowTools(false)
-            setShowExams(false)
+            setShowMathHub(false)
             setShowTopics(false) // Closes topics
           }}
-          onToggleExams={() => {
-            setShowExams(!showExams)
+          onToggleMathHub={() => {
+            setShowMathHub(!showMathHub)
             setShowTools(false)
             setShowFun(false)
             setShowTopics(false) // Closes topics
@@ -70,18 +72,23 @@ export default function App() {
             setShowTopics(!showTopics)
             setShowTools(false) // Closes tools
             setShowFun(false) // Closes fun
-            setShowExams(false) // Closes exams to fix the sticking highlight!
+            setShowMathHub(false) // Closes exams to fix the sticking highlight!
           }}
           isToolsOpen={showTools}
           isTopicsOpen={showTopics}
           isFunOpen={showFun}
-          isExamsOpen={showExams}
+          isMathHubOpen={showMathHub}
         />
 
         <main>
           {/* Main welcoming branding text */}
           {/* --- LANDING PAGE: Main welcoming branding text --- */}
           {isLandingPage && <Hero />}
+
+          <div className="min-h-screen bg-zinc-950 text-white">
+            {/* Your Navbar and Calculators go here */}
+
+          </div>
 
           {/* --- VIEW BLOCK 1: PURE UTILITY TOOLS & SOLUTIONS --- */}
           {showTools && (
@@ -94,6 +101,8 @@ export default function App() {
                 setActiveTab={setCalculatorTab}
               />
               <FormulaSheet onLaunchTool={navigateToTool} />
+              <ReferenceHub />
+
             </div>
           )}
 
@@ -111,12 +120,13 @@ export default function App() {
 
           {/* --- VIEW BLOCK 3: EXAMS PRACTICE ENGINE & PDF RESOURCE CENTER --- */}
           {/* This tells the computer to read the quiz out loud the exact moment it pops open */}
-          {showExams && (
+          {showMathHub && (
             <div
               id="exams-portal-section"
               aria-live="polite"
               className="bg-zinc-950/40 border-y border-zinc-800 py-12"
             >
+              <StudyCenter />
               <QuizGenerator />
               <WorksheetDownloads />
             </div>

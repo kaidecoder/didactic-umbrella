@@ -4,18 +4,18 @@ export default function Header({
   onResetHome,
   onToggleTools,
   onToggleFun,
-  onToggleExams,
+  onToggleMathHub,
   onToggleTopics,
   isToolsOpen,
   isTopicsOpen,
   isFunOpen,
-  isExamsOpen,
+  isMathHubOpen,
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Checks if no other sections are currently highlighted
   const isHomeActive =
-    !isToolsOpen && !isFunOpen && !isExamsOpen && !isTopicsOpen
+    !isToolsOpen && !isFunOpen && !isMathHubOpen && !isTopicsOpen
 
   const handleNavClick = (toggleAction) => {
     toggleAction()
@@ -56,10 +56,10 @@ export default function Header({
             Fun Zone
           </button>
           <button
-            onClick={onToggleExams}
-            className={`transition ${isExamsOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
+            onClick={onToggleMathHub}
+            className={`transition ${isMathHubOpen ? "text-red-400 font-medium" : "text-zinc-400 hover:text-zinc-200"}`}
           >
-            Exams
+            MathHub
           </button>
           <button
             onClick={onToggleTopics}
@@ -129,10 +129,10 @@ export default function Header({
             Fun Zone
           </button>
           <button
-            onClick={() => handleNavClick(onToggleExams)}
-            className={`text-left py-2 px-3 rounded-lg ${isExamsOpen ? "text-red-400 bg-zinc-900/50" : "text-zinc-400"}`}
+            onClick={() => handleNavClick(onToggleMathHub)}
+            className={`text-left py-2 px-3 rounded-lg ${isMathHubOpen ? "text-red-400 bg-zinc-900/50" : "text-zinc-400"}`}
           >
-            Exams
+            Math Hub
           </button>
           <button
             onClick={() => handleNavClick(onToggleTopics)}
