@@ -14,6 +14,7 @@ import Footer from "./components/Footer"
 import PlayableGames from "./components/PlayableGames"
 import ReferenceHub from "./components/ReferenceHub"
 import StudyCenter from "./components/StudyCenter"
+import MathLiterature from "./components/MathLiterature"
 
 export default function App() {
   // --- VISIBILITY STATES FOR EACH SECTION ---
@@ -102,6 +103,7 @@ export default function App() {
               />
               <FormulaSheet onLaunchTool={navigateToTool} />
               <ReferenceHub />
+              <MathLiterature />
 
             </div>
           )}
